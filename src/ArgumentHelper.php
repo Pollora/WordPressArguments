@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Pollora\WordPressArgs;
 
 use Illuminate\Support\Str;
-use Pollora\Services\Translater;
 
 /**
  * The ArgumentHelper class is a trait that provides methods to extract arguments from properties using getter methods.
