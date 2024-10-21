@@ -1,5 +1,5 @@
 {
-    "name": "pollen/wordpress-args",
+    "name": "pollora/wordpress-args",
     "description": "Manipulate WordPress arguments as an object.",
     "license": "GPL-2.0-or-later",
     "authors": [
@@ -14,7 +14,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Pollen\\WordPressArgs\\": "src/"
+            "Pollora\\WordPressArgs\\": "src/"
         }
     }
 }
