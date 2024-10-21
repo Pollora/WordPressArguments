@@ -21,7 +21,7 @@ trait ArgumentHelper
     /**
      * Set the raw arguments for the method.
      *
-     * @param  array  $rawArgs The raw arguments to be set.
+     * @param  array  $rawArgs  The raw arguments to be set.
      * @return self Returns the instance of the object for method chaining.
      */
     public function setRawArgs(array $rawArgs): self
@@ -62,7 +62,8 @@ trait ArgumentHelper
     private function collectGetters(): array
     {
         $methodProperties = array_keys(get_class_vars(get_class($this)));
-        return array_filter($methodProperties, function($propertyName){
+
+        return array_filter($methodProperties, function ($propertyName) {
             return $propertyName !== 'rawArgs';
         });
     }

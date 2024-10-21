@@ -7,6 +7,7 @@ class TestClass
     use ArgumentHelper;
 
     private $testProperty;
+
     private $anotherProperty;
 
     public function getTestProperty()
@@ -17,6 +18,7 @@ class TestClass
     public function setTestProperty($value)
     {
         $this->testProperty = $value;
+
         return $this;
     }
 
@@ -28,12 +30,13 @@ class TestClass
     public function setAnotherProperty($value)
     {
         $this->anotherProperty = $value;
+
         return $this;
     }
 }
 
 test('extractArgumentFromProperties correctly extracts arguments', function () {
-    $testObject = new TestClass();
+    $testObject = new TestClass;
     $testObject->setTestProperty('test value');
     $testObject->setAnotherProperty('another value');
 
@@ -46,20 +49,22 @@ test('extractArgumentFromProperties correctly extracts arguments', function () {
 });
 
 test('buildArguments correctly merges raw arguments', function () {
-    $testObject = new TestClass();
+    $testObject = new TestClass;
     $testObject->setTestProperty('test value');
     $testObject->setRawArgs(['raw_arg' => 'raw value']);
 
     // Simulons la fonction wp_parse_args de WordPress
-    if (!function_exists('wp_parse_args')) {
-        function wp_parse_args($args, $defaults = []) {
+    if (! function_exists('wp_parse_args')) {
+        function wp_parse_args($args, $defaults = [])
+        {
             if (is_object($args)) {
                 $r = get_object_vars($args);
             } elseif (is_array($args)) {
-                $r =& $args;
+                $r = &$args;
             } else {
                 parse_str($args, $r);
             }
+
             return array_merge($defaults, $r);
         }
     }
@@ -73,7 +78,7 @@ test('buildArguments correctly merges raw arguments', function () {
 });
 
 test('setRawArgs and getRawArgs work correctly', function () {
-    $testObject = new TestClass();
+    $testObject = new TestClass;
     $rawArgs = ['test' => 'value'];
 
     $testObject->setRawArgs($rawArgs);
@@ -82,7 +87,7 @@ test('setRawArgs and getRawArgs work correctly', function () {
 });
 
 test('collectGetters returns correct getters', function () {
-    $testObject = new TestClass();
+    $testObject = new TestClass;
 
     $getters = (new ReflectionClass($testObject))->getMethod('collectGetters')->invoke($testObject);
 
@@ -90,7 +95,7 @@ test('collectGetters returns correct getters', function () {
 });
 
 test('makeArgName correctly converts to snake_case', function () {
-    $testObject = new TestClass();
+    $testObject = new TestClass;
 
     $argName = (new ReflectionClass($testObject))->getMethod('makeArgName')->invoke($testObject, 'testProperty');
 
