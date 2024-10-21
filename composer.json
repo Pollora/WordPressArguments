@@ -19,7 +19,8 @@
     },
     "require-dev": {
         "pestphp/pest": "^3.4",
-        "spatie/invade": "^2.1"
+        "spatie/invade": "^2.1",
+        "laravel/pint": "^1.18"
     },
     "config": {
         "allow-plugins": {
