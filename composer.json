@@ -1,7 +1,7 @@
 {
     "name": "pollora/wordpress-args",
     "description": "Manipulate WordPress arguments as an object.",
-    "license": "GPL-2.0-or-later",
+    "license": "MIT",
     "authors": [
         {
             "name": "Olivier Gorzalka",
