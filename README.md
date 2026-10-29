@@ -21,7 +21,7 @@ WordPress Arguments turns an object into the arguments array that WordPress func
 composer require pollora/wordpress-args
 ```
 
-Requires PHP 8.2+ and `illuminate/support` 12 or 13. Building the arguments calls WordPress's `wp_parse_args()`, so it runs inside WordPress.
+Requires PHP 8.3+ and `illuminate/support` 12 or 13. Building the arguments calls WordPress's `wp_parse_args()`, so it runs inside WordPress.
 
 ## Quick start
 
