@@ -1,1 +1,6 @@
+
+# Pollora harness reports
 .idea
+/.harness/
+composer.lock
+vendor

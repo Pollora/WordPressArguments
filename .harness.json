@@ -1,0 +1,14 @@
+{
+    "profile": "core",
+    "mode": "enforce",
+    "downstream": [
+        "framework"
+    ],
+    "allow_laravel": [
+        "illuminate/support"
+    ],
+    "ratchet": {
+        "phpstan_level": 5,
+        "phpstan_baseline": 1
+    }
+}

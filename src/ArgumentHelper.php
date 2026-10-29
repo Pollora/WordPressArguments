@@ -42,6 +42,28 @@ trait ArgumentHelper
     }
 
     /**
+     * Extracts arguments from object properties using getter methods.
+     *
+     * @return array An associative array containing the extracted arguments.
+     */
+    public function extractArgumentFromProperties(): array
+    {
+        $args = [];
+        $getters = $this->collectGetters();
+
+        foreach ($getters as $getter) {
+            $argValue = $this->{$getter};
+            if ($argValue === null) {
+                continue;
+            }
+
+            $args[$this->makeArgName($getter)] = $argValue;
+        }
+
+        return $args;
+    }
+
+    /**
      * Build the arguments array
      *
      * @return array The built arguments array
@@ -49,9 +71,8 @@ trait ArgumentHelper
     protected function buildArguments(): array
     {
         $args = $this->extractArgumentFromProperties();
-        $args = wp_parse_args($this->getRawArgs() ?? [], $args);
 
-        return $args;
+        return wp_parse_args($this->getRawArgs() ?? [], $args);
     }
 
     /**
@@ -61,11 +82,9 @@ trait ArgumentHelper
      */
     private function collectGetters(): array
     {
-        $methodProperties = array_keys(get_class_vars(get_class($this)));
+        $methodProperties = array_keys(get_class_vars($this::class));
 
-        return array_filter($methodProperties, function ($propertyName) {
-            return $propertyName !== 'rawArgs';
-        });
+        return array_filter($methodProperties, fn (int|string $propertyName): bool => $propertyName !== 'rawArgs');
     }
 
     /**
@@ -76,26 +95,5 @@ trait ArgumentHelper
     private function makeArgName(string $propertyName): string
     {
         return Str::snake($propertyName);
-    }
-
-    /**
-     * Extracts arguments from object properties using getter methods.
-     *
-     * @return array An associative array containing the extracted arguments.
-     */
-    public function extractArgumentFromProperties()
-    {
-        $args = [];
-        $getters = $this->collectGetters();
-
-        foreach ($getters as $getter) {
-            $argValue = $this->{$getter};
-            if ($argValue === null) {
-                continue;
-            }
-            $args[$this->makeArgName($getter)] = $argValue;
-        }
-
-        return $args;
     }
 }

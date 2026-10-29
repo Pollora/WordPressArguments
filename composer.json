@@ -19,13 +19,18 @@
         }
     },
     "require-dev": {
-        "pestphp/pest": "^3.4",
+        "pestphp/pest": "^3.8.2",
         "spatie/invade": "^2.1",
-        "laravel/pint": "^1.18"
+        "laravel/pint": "^1.18",
+        "pollora/harness": "^0.1.13"
     },
     "config": {
         "allow-plugins": {
             "pestphp/pest-plugin": true
         }
+    },
+    "scripts": {
+        "qa": "@php vendor/bin/pollora-qa check",
+        "qa:fast": "@php vendor/bin/pollora-qa check --fast"
     }
 }
