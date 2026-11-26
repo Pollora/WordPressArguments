@@ -21,7 +21,7 @@ trait ArgumentHelper
     /**
      * Set the raw arguments for the method.
      *
-     * @param  array  $rawArgs  The raw arguments to be set.
+     * @param  array<array-key, mixed>  $rawArgs  The raw arguments to be set.
      * @return self Returns the instance of the object for method chaining.
      */
     public function setRawArgs(array $rawArgs): self
@@ -34,7 +34,7 @@ trait ArgumentHelper
     /**
      * Get the raw arguments
      *
-     * @return array|null The raw arguments, or null if not set
+     * @return array<array-key, mixed>|null The raw arguments, or null if not set
      */
     public function getRawArgs(): ?array
     {
@@ -44,7 +44,7 @@ trait ArgumentHelper
     /**
      * Extracts arguments from object properties using getter methods.
      *
-     * @return array An associative array containing the extracted arguments.
+     * @return array<string, mixed> An associative array containing the extracted arguments.
      */
     public function extractArgumentFromProperties(): array
     {
@@ -66,7 +66,7 @@ trait ArgumentHelper
     /**
      * Build the arguments array
      *
-     * @return array The built arguments array
+     * @return array<array-key, mixed> The built arguments array
      */
     protected function buildArguments(): array
     {
@@ -78,7 +78,7 @@ trait ArgumentHelper
     /**
      * Collects all getter methods of the current object.
      *
-     * @return array An array containing all getter method names.
+     * @return array<int, string> An array containing all getter method names.
      */
     private function collectGetters(): array
     {
