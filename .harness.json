@@ -8,7 +8,7 @@
         "illuminate/support"
     ],
     "ratchet": {
-        "phpstan_level": 6,
+        "phpstan_level": 7,
         "phpstan_baseline": 1,
         "coverage": 100,
         "type_coverage": 88.8,
