@@ -1,7 +1,8 @@
 includes:
-    - phpstan-baseline.neon
     - vendor/pollora/harness/presets/phpstan/base.neon
 parameters:
     level: 5
     paths:
         - src
+        # PHPStan skips a trait no analysed class uses: this class makes it analyse ArgumentHelper
+        - tests/Fixtures

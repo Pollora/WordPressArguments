@@ -14,7 +14,7 @@ trait ArgumentHelper
     /**
      * Raw post type args.
      *
-     * @var args
+     * @var array<array-key, mixed>|null
      */
     private $rawArgs;
 

@@ -2,40 +2,7 @@
 
 declare(strict_types=1);
 
-use Pollora\WordPressArgs\ArgumentHelper;
-
-class TestClass
-{
-    use ArgumentHelper;
-
-    private $testProperty;
-
-    private $anotherProperty;
-
-    public function getTestProperty()
-    {
-        return $this->testProperty;
-    }
-
-    public function setTestProperty($value)
-    {
-        $this->testProperty = $value;
-
-        return $this;
-    }
-
-    public function getAnotherProperty()
-    {
-        return $this->anotherProperty;
-    }
-
-    public function setAnotherProperty($value)
-    {
-        $this->anotherProperty = $value;
-
-        return $this;
-    }
-}
+require_once __DIR__.'/../Fixtures/TestClass.php';
 
 test('extractArgumentFromProperties correctly extracts arguments', function () {
     $testObject = new TestClass;
